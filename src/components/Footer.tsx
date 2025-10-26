@@ -1,0 +1,101 @@
+import { Mail, Phone, MapPin } from "lucide-react";
+
+const Footer = () => {
+  return (
+    <footer className="bg-gradient-hero text-white mt-20">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Logo and Company Name */}
+          <div>
+            <div className="text-2xl font-bold mb-4">
+              <span className="text-white">VIKI</span>
+              <span className="text-secondary">NOX</span>
+            </div>
+            <p className="text-sm text-white/80">
+              Soluções em aço inoxidável para diversos setores.
+            </p>
+            <p className="text-xs text-white/60 mt-4">
+              Razão Social: Vikinox Conexões Tubos e Usinagem LTDA
+            </p>
+            <p className="text-xs text-white/60">
+              CNPJ: 30.520.832/0001-25
+            </p>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contato</h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <Mail size={18} className="text-secondary" />
+                <a
+                  href="mailto:vikinox@vikinox.com.br"
+                  className="text-sm text-white/80 hover:text-secondary transition-smooth"
+                >
+                  vikinox@vikinox.com.br
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone size={18} className="text-secondary" />
+                <a
+                  href="tel:+5511959690000"
+                  className="text-sm text-white/80 hover:text-secondary transition-smooth"
+                >
+                  (11) 95969-0000
+                </a>
+              </div>
+              <div className="flex items-start space-x-3">
+                <MapPin size={18} className="text-secondary mt-1" />
+                <address className="text-sm text-white/80 not-italic">
+                  R. Sidnei, 182 – Utinga
+                  <br />
+                  Santo André - SP
+                </address>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+            <nav className="space-y-2">
+              <a
+                href="/"
+                className="block text-sm text-white/80 hover:text-secondary transition-smooth"
+              >
+                Home
+              </a>
+              <a
+                href="/produtos"
+                className="block text-sm text-white/80 hover:text-secondary transition-smooth"
+              >
+                Produtos
+              </a>
+              <a
+                href="/orcamento"
+                className="block text-sm text-white/80 hover:text-secondary transition-smooth"
+              >
+                Solicite um Orçamento
+              </a>
+              <a
+                href="/contato"
+                className="block text-sm text-white/80 hover:text-secondary transition-smooth"
+              >
+                Contato
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-white/20 mt-8 pt-6 text-center">
+          <p className="text-sm text-white/60">
+            © {new Date().getFullYear()} VIKINOX. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

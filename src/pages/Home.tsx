@@ -72,9 +72,18 @@ const Home = () => {
               </Button>
             </a>
             <Link to="/produtos">
-              <Button variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-primary">
-                Ver Produtos
-              </Button>
+            <Button
+              variant="outline"
+              size="xl"
+              className="border-primary text-primary hover:bg-primary hover:text-white
+                        motion-safe:transition-colors duration-300 ease-out"
+            >
+              Ver Produtos
+            </Button>
+
+
+
+
             </Link>
           </div>
         </div>

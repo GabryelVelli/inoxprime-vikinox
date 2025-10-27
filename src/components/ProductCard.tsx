@@ -27,7 +27,7 @@ const ProductCard = ({ title, image, description }: ProductCardProps) => {
             <p className="text-sm text-muted-foreground">{description}</p>
           )}
           <Link to="/orcamento">
-            <Button variant="outline" size="sm" className="w-full">
+            <Button variant="outline" size="sm" className="w-full mt-4">
               Solicitar Orçamento
             </Button>
           </Link>

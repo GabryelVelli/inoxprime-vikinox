@@ -1,30 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import heroImage from "@/assets/hero-building.jpg";
-import productPump from "@/assets/product-pump.jpg";
-import productConnections from "@/assets/product-connections.jpg";
-import productFilter from "@/assets/product-filter.jpg";
+import heroImage from "@/assets/hero-building.jpeg";
+import productPump from "@/assets/product-pump.png";
+import productConnections from "@/assets/product-connections.png";
+import productFilter from "@/assets/product-filter.png";
 
 const Home = () => {
   const products = [
     {
       title: "Bombas Sanitárias",
       image: productPump,
-      description: "Bombas de alta qualidade em aço inoxidável para processos sanitários",
     },
     {
       title: "Conexões",
       image: productConnections,
-      description: "Ampla linha de conexões em inox para diversas aplicações industriais",
     },
     {
       title: "Filtros de Linha",
       image: productFilter,
-      description: "Filtros de linha em aço inoxidável para máxima eficiência",
     },
   ];
 
@@ -32,7 +33,13 @@ const Home = () => {
     { name: "3M", logo: "3M" },
     { name: "Merck", logo: "Merck" },
     { name: "Colgate", logo: "Colgate" },
-    { name: "Ambev", logo: "Ambev" },
+    { name: "Pall", logo: "Pall" },
+    { name: "Donaldson", logo: "Donaldson" },
+    { name: "Zeppelin", logo: "Zeppelin" },
+    { name: "Basf", logo: "Basf" },
+    { name: "Parker", logo: "Parker" },
+    { name: "Toledo", logo: "Toledo" },
+    { name: "WGM", logo: "WGM" },
   ];
 
   const features = [
@@ -72,14 +79,14 @@ const Home = () => {
               </Button>
             </a>
             <Link to="/produtos">
-            <Button
-              variant="outline"
-              size="xl"
-              className="border-primary text-primary hover:bg-primary hover:text-white
+              <Button
+                variant="outline"
+                size="xl"
+                className="border-primary text-primary hover:bg-primary hover:text-white
                         motion-safe:transition-colors duration-300 ease-out"
-            >
-              Ver Produtos
-            </Button>
+              >
+                Ver Produtos
+              </Button>
 
 
 
@@ -132,7 +139,6 @@ const Home = () => {
                 key={index}
                 title={product.title}
                 image={product.image}
-                description={product.description}
               />
             ))}
           </div>
@@ -158,15 +164,29 @@ const Home = () => {
               Parceiros de sucesso em diversos segmentos
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {clients.map((client, index) => (
-              <div
-                key={index}
-                className="bg-background p-8 rounded-lg shadow-elegant hover:shadow-glow transition-smooth flex items-center justify-center"
-              >
-                <span className="text-2xl font-bold text-foreground">{client.logo}</span>
-              </div>
-            ))}
+          <div className="max-w-6xl mx-auto relative px-12">
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              navigation
+              autoplay={{ delay: 2500, disableOnInteraction: false }}
+              loop
+              spaceBetween={30}
+              breakpoints={{
+                0: { slidesPerView: 2 },
+                640: { slidesPerView: 3 },
+                1024: { slidesPerView: 5 },
+              }}
+            >
+              {clients.map((client, index) => (
+                <SwiperSlide key={index}>
+                  <div className="bg-background p-8 rounded-lg shadow-elegant flex items-center justify-center">
+                    <span className="text-2xl font-bold text-foreground">
+                      {client.logo}
+                    </span>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </section>

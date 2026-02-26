@@ -1,41 +1,38 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import productPump from "@/assets/product-pump.jpg";
-import productConnections from "@/assets/product-connections.jpg";
-import productFilter from "@/assets/product-filter.jpg";
+import productPump from "@/assets/product-pump.png";
+import productConnections from "@/assets/product-connections.png";
+import productFilter from "@/assets/product-filter.png";
+import productVB from "@/assets/product-vb.png";
+import productPipe from "@/assets/product-pipe.jpeg";
+import productHousing from "@/assets/product-housing.jpeg";
 
 const Products = () => {
   const products = [
     {
       title: "Bombas Sanitárias",
       image: productPump,
-      description: "Bombas centrífugas e lobulares em aço inoxidável 304 e 316L",
     },
     {
       title: "Conexões",
       image: productConnections,
-      description: "Cotovelos, tês, reduções e uniões em diversos diâmetros",
     },
     {
       title: "Filtros de Linha",
       image: productFilter,
-      description: "Filtros tipo Y e cesto para remoção de impurezas",
     },
     {
       title: "Válvulas",
-      image: productConnections,
-      description: "Válvulas borboleta, esfera e diafragma em inox",
+      image: productVB,
     },
     {
       title: "Tubos e Acessórios",
-      image: productPump,
-      description: "Tubulações sanitárias e industriais com acabamento polido",
+      image: productPipe,
     },
     {
       title: "Usinagem Especial",
-      image: productFilter,
-      description: "Peças customizadas conforme especificação do cliente",
+      image: productHousing,
     },
   ];
 
@@ -66,7 +63,6 @@ const Products = () => {
                 key={index}
                 title={product.title}
                 image={product.image}
-                description={product.description}
               />
             ))}
           </div>

@@ -51,7 +51,7 @@ const Home = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `linear-gradient(rgba(20, 40, 60, 0.85), rgba(20, 40, 60, 0.85)), url(${heroImage})`,
+            backgroundImage: `linear-gradient(rgba(20, 40, 60, 0.5), rgba(20, 40, 60, 0.75)), url(${heroImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
@@ -138,7 +138,7 @@ const Home = () => {
           </div>
           <div className="text-center">
             <Link to="/produtos">
-              <Button variant="cta" size="xl">
+              <Button variant="hero" size="xl">
                 Ver Catálogo Completo
                 <ArrowRight size={20} />
               </Button>

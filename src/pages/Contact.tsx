@@ -84,8 +84,6 @@ const Contact = () => {
                     <h3 className="font-semibold text-foreground mb-1">Horário</h3>
                     <p className="text-muted-foreground">
                       Segunda a Sexta: 8h às 18h
-                      <br />
-                      Sábado: 8h às 12h
                     </p>
                   </div>
                 </div>
@@ -119,14 +117,6 @@ const Contact = () => {
                   <p className="text-foreground">vikinox@vikinox.com.br</p>
                 </div>
               </div>
-
-              <div className="mt-8 pt-8 border-t border-border">
-                <Link to="/orcamento">
-                  <Button variant="cta" size="lg" className="w-full">
-                    Solicitar Orçamento
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -141,7 +131,7 @@ const Contact = () => {
             </h2>
             <div className="aspect-video bg-background rounded-lg shadow-elegant overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0947916879396!2d-46.53388!3d-23.6167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM2JzU4LjEiUyA0NsKwMzInMDIuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                src="https://www.google.com/maps?q=-23.6218868,-46.5357085&z=18&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

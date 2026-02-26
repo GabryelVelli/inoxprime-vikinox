@@ -178,20 +178,6 @@ const Quote = () => {
                       </FormItem>
                     )}
                   />
-
-                  <FormField
-                    control={form.control}
-                    name="deadline"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Prazo de Entrega Desejado *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: 15 dias" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                 </div>
 
                 <FormField

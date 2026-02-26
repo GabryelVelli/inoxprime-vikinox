@@ -23,49 +23,65 @@ const Header = () => {
     { name: "Contato", path: "/contato" },
   ];
 
+  const isActive = (path: string) => {
+    if (path.includes("#")) {
+      const [basePath, hash] = path.split("#");
+      const normalizedBase = basePath || "/";
+      return location.pathname === normalizedBase && location.hash === `#${hash}`;
+    }
+    return location.pathname === path;
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-elegant"
+          ? "bg-background shadow-elegant"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="text-2xl font-bold">
-              <span className="text-foreground">VIKI</span>
+              <span className={isScrolled ? "text-foreground" : "text-white"}>VIKI</span>
               <span className="text-gradient">NOX</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.path}
-                className={`text-sm font-medium transition-smooth hover:text-accent ${
-                  location.pathname === item.path
+                className={`text-sm font-medium transition-smooth ${
+                  isScrolled
+                    ? "hover:text-accent"
+                    : "text-white/90 hover:text-white"
+                } ${
+                  isActive(item.path)
                     ? "text-accent"
-                    : "text-foreground"
+                    : isScrolled
+                      ? "text-foreground"
+                      : "text-white/90"
                 }`}
               >
                 {item.name}
               </a>
             ))}
             <Link to="/orcamento">
-              <Button variant="cta" size="lg">
-                Solicite um Orçamento
+              <Button variant="hero" size="lg">
+                {"Solicite um Or\u00E7amento"}
               </Button>
             </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground hover:text-accent transition-smooth"
+            className={`md:hidden p-2 transition-smooth ${
+              isScrolled
+                ? "text-foreground hover:text-accent"
+                : "text-white hover:text-white/80"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -73,15 +89,26 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
+          <div
+            className={`md:hidden pt-2 pb-4 border-t ${
+              isScrolled
+                ? "bg-background border-border"
+                : "bg-transparent border-white/20"
+            }`}
+          >
+            <nav className="flex flex-col space-y-4 px-1">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.path}
-                  className="text-sm font-medium text-foreground hover:text-accent transition-smooth"
+                  className={`text-sm font-medium transition-smooth ${
+                    isActive(item.path)
+                      ? "text-accent"
+                      : isScrolled
+                        ? "text-foreground hover:text-accent"
+                        : "text-white/95 hover:text-white"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -89,7 +116,7 @@ const Header = () => {
               ))}
               <Link to="/orcamento" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="cta" size="lg" className="w-full">
-                  Solicite um Orçamento
+                  {"Solicite um Or\u00E7amento"}
                 </Button>
               </Link>
             </nav>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="dropOuter" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d9dde5" />
+      <stop offset="100%" stop-color="#8d97ab" />
+    </linearGradient>
+    <linearGradient id="dropInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5a647a" />
+      <stop offset="100%" stop-color="#2a3345" />
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="12" fill="#1f2937" />
+
+  <g transform="translate(-5 -7) scale(1.22)">
+    <path
+      d="M32 6C22 16 16 25 16 34c0 11 7 20 16 20s16-9 16-20c0-9-6-18-16-28z"
+      fill="url(#dropOuter)"
+    />
+    <path
+      d="M32 20c-6 7-10 12-10 18 0 7 4 12 10 12s10-5 10-12c0-6-4-11-10-18z"
+      fill="url(#dropInner)"
+    />
+
+    <polygon points="45,33 46.7,36.8 50.8,37.1 47.7,39.8 48.7,43.8 45,41.7 41.3,43.8 42.3,39.8 39.2,37.1 43.3,36.8" fill="#ffd400"/>
+    <polygon points="42,40 43.2,42.8 46.3,43 44,45.1 44.7,48.1 42,46.5 39.3,48.1 40,45.1 37.7,43 40.8,42.8" fill="#ff2a2a"/>
+    <polygon points="37,44.5 38.1,47 40.8,47.2 38.8,49 39.4,51.6 37,50.2 34.6,51.6 35.2,49 33.2,47.2 35.9,47" fill="#1380ff"/>
+  </g>
+</svg>

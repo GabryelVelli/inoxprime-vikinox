@@ -30,13 +30,13 @@ const ProductCard = ({ title, image, description }: ProductCardProps) => {
           {title === "Usinagem Especial" ? (
             <Link to="/orcamento">
               <Button variant="outline" size="sm" className="w-full mt-4">
-                Solicitar Orçamento
+                {"Solicitar Or\u00E7amento"}
               </Button>
             </Link>
           ) : (
             <Link to="/orcamento">
               <Button variant="outline" size="sm" className="w-full mt-4">
-                Conferir Catálogo
+                {"Conferir Cat\u00E1logo"}
               </Button>
             </Link>
           )}

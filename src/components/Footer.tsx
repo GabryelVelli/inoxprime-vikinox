@@ -5,24 +5,22 @@ const Footer = () => {
     <footer className="bg-gradient-hero text-white mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo and Company Name */}
           <div>
             <div className="text-2xl font-bold mb-4">
               <span className="text-white">VIKI</span>
               <span className="text-secondary">NOX</span>
             </div>
             <p className="text-sm text-white/80">
-              Soluções em aço inoxidável para diversos setores.
+              {"Solu\u00E7\u00F5es em a\u00E7o inoxid\u00E1vel para diversos setores."}
             </p>
             <p className="text-xs text-white/60 mt-4">
-              Razão Social: Vikinox Conexões Tubos e Usinagem LTDA
+              {"Raz\u00E3o Social: Vikinox Conex\u00F5es Tubos e Usinagem LTDA"}
             </p>
             <p className="text-xs text-white/60">
               CNPJ: 30.520.832/0001-25
             </p>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <div className="space-y-3">
@@ -47,17 +45,16 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin size={18} className="text-secondary mt-1" />
                 <address className="text-sm text-white/80 not-italic">
-                  R. Sidnei, 182 – Utinga
+                  {"R. Sidnei, 182 \u2013 Utinga"}
                   <br />
-                  Santo André - SP
+                  {"Santo Andr\u00E9 - SP"}
                 </address>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+            <h3 className="text-lg font-semibold mb-4">{"Links R\u00E1pidos"}</h3>
             <nav className="space-y-2">
               <a
                 href="/"
@@ -75,7 +72,7 @@ const Footer = () => {
                 href="/orcamento"
                 className="block text-sm text-white/80 hover:text-secondary transition-smooth"
               >
-                Solicite um Orçamento
+                {"Solicite um Or\u00E7amento"}
               </a>
               <a
                 href="/contato"
@@ -87,10 +84,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t border-white/20 mt-8 pt-6 text-center">
           <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} VIKINOX. Todos os direitos reservados.
+            {"\u00A9"} {new Date().getFullYear()} VIKINOX. Todos os direitos reservados.
           </p>
         </div>
       </div>

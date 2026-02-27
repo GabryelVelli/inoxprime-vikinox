@@ -1,15 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -17,25 +14,22 @@ const Contact = () => {
               Entre em Contato
             </h1>
             <p className="text-xl text-white/90">
-              Estamos prontos para atender você e sua empresa
+              {"Estamos prontos para atender voc\u00EA e sua empresa"}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Information */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Contact Details */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-foreground mb-6">
-                  Informações de Contato
+                  {"Informa\u00E7\u00F5es de Contato"}
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Entre em contato conosco através de qualquer um dos canais abaixo.
-                  Nossa equipe está pronta para atendê-lo.
+                  {"Entre em contato conosco atrav\u00E9s de qualquer um dos canais abaixo. Nossa equipe est\u00E1 pronta para atend\u00EA-lo."}
                 </p>
               </div>
 
@@ -69,11 +63,11 @@ const Contact = () => {
                 <div className="flex items-start space-x-4 p-4 rounded-lg bg-muted hover:shadow-elegant transition-smooth">
                   <MapPin className="text-accent flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Endereço</h3>
+                    <h3 className="font-semibold text-foreground mb-1">{"Endere\u00E7o"}</h3>
                     <address className="text-muted-foreground not-italic">
-                      R. Sidnei, 182 – Utinga
+                      {"R. Sidnei, 182 \u2013 Utinga"}
                       <br />
-                      Santo André - SP
+                      {"Santo Andr\u00E9 - SP"}
                     </address>
                   </div>
                 </div>
@@ -81,16 +75,15 @@ const Contact = () => {
                 <div className="flex items-start space-x-4 p-4 rounded-lg bg-muted hover:shadow-elegant transition-smooth">
                   <Clock className="text-accent flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Horário</h3>
+                    <h3 className="font-semibold text-foreground mb-1">{"Hor\u00E1rio"}</h3>
                     <p className="text-muted-foreground">
-                      Segunda a Sexta: 8h às 18h
+                      {"Segunda a Sexta: 8h \u00E0s 18h"}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Company Info Card */}
             <div className="bg-muted p-8 rounded-lg shadow-elegant">
               <h2 className="text-2xl font-bold text-foreground mb-6">
                 Dados da Empresa
@@ -98,10 +91,10 @@ const Contact = () => {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-sm font-semibold text-muted-foreground mb-1">
-                    Razão Social
+                    {"Raz\u00E3o Social"}
                   </h3>
                   <p className="text-foreground">
-                    Vikinox Conexões Tubos e Usinagem LTDA
+                    {"Vikinox Conex\u00F5es Tubos e Usinagem LTDA"}
                   </p>
                 </div>
                 <div>
@@ -122,12 +115,11 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
       <section className="py-12 bg-muted">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-foreground mb-8">
-              Nossa Localização
+              {"Nossa Localiza\u00E7\u00E3o"}
             </h2>
             <div className="aspect-video bg-background rounded-lg shadow-elegant overflow-hidden">
               <iframe
@@ -138,7 +130,7 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Localização VIKINOX"
+                title={"Localiza\u00E7\u00E3o VIKINOX"}
               />
             </div>
           </div>

@@ -19,13 +19,13 @@ import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
 
 const quoteFormSchema = z.object({
-  name: z.string().min(2, "Nome deve ter no mínimo 2 caracteres").max(100),
-  email: z.string().email("E-mail inválido").max(255),
-  cnpj: z.string().min(14, "CNPJ inválido").max(18),
-  phone: z.string().min(10, "Telefone inválido").max(15),
-  position: z.string().min(2, "Cargo deve ter no mínimo 2 caracteres").max(100),
-  deadline: z.string().min(2, "Prazo inválido").max(50),
-  message: z.string().min(10, "Mensagem deve ter no mínimo 10 caracteres").max(1000),
+  name: z.string().min(2, "Nome deve ter no m\u00EDnimo 2 caracteres").max(100),
+  email: z.string().email("E-mail inv\u00E1lido").max(255),
+  cnpj: z.string().min(14, "CNPJ inv\u00E1lido").max(18),
+  phone: z.string().min(10, "Telefone inv\u00E1lido").max(15),
+  position: z.string().min(2, "Cargo deve ter no m\u00EDnimo 2 caracteres").max(100),
+  deadline: z.string().min(2, "Prazo inv\u00E1lido").max(50),
+  message: z.string().min(10, "Mensagem deve ter no m\u00EDnimo 10 caracteres").max(1000),
 });
 
 type QuoteFormData = z.infer<typeof quoteFormSchema>;
@@ -51,7 +51,7 @@ const Quote = () => {
     console.log("Quote form data:", data);
     setIsSubmitted(true);
     toast({
-      title: "Orçamento enviado com sucesso!",
+      title: "Or\u00E7amento enviado com sucesso!",
       description: "Entraremos em contato em breve.",
     });
   };
@@ -67,14 +67,13 @@ const Quote = () => {
                 <CheckCircle className="text-accent" size={48} />
               </div>
               <h1 className="text-4xl font-bold text-foreground mb-4">
-                Solicitação Enviada!
+                {"Solicita\u00E7\u00E3o Enviada!"}
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
-                Recebemos sua solicitação de orçamento. Nossa equipe entrará em contato em breve
-                para discutir suas necessidades.
+                {"Recebemos sua solicita\u00E7\u00E3o de or\u00E7amento. Nossa equipe entrar\u00E1 em contato em breve para discutir suas necessidades."}
               </p>
               <Button variant="cta" size="lg" onClick={() => setIsSubmitted(false)}>
-                Enviar Novo Orçamento
+                {"Enviar Novo Or\u00E7amento"}
               </Button>
             </div>
           </div>
@@ -88,21 +87,19 @@ const Quote = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Solicite um Orçamento
+              {"Solicite um Or\u00E7amento"}
             </h1>
             <p className="text-xl text-white/90">
-              Preencha o formulário abaixo e entraremos em contato rapidamente
+              {"Preencha o formul\u00E1rio abaixo e entraremos em contato rapidamente"}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Form Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
@@ -178,6 +175,20 @@ const Quote = () => {
                       </FormItem>
                     )}
                   />
+
+                  <FormField
+                    control={form.control}
+                    name="deadline"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Prazo *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Ex: 30 dias" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
 
                 <FormField
@@ -185,7 +196,7 @@ const Quote = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Mensagem / Descrição do Produto *</FormLabel>
+                      <FormLabel>{"Mensagem / Descri\u00E7\u00E3o do Produto *"}</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Descreva os produtos que precisa e quantidade..."
@@ -199,7 +210,7 @@ const Quote = () => {
                 />
 
                 <Button type="submit" variant="cta" size="xl" className="w-full">
-                  Enviar Solicitação
+                  {"Enviar Solicita\u00E7\u00E3o"}
                 </Button>
               </form>
             </Form>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoVk from "@/assets/logovk.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,13 +37,14 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
         isScrolled
-          ? "bg-background shadow-elegant"
-          : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md shadow-elegant"
+          : "bg-slate-800/55 backdrop-blur-sm"
       }`}
-    >
+      >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-2 group">
+            <img src={logoVk} alt="Logo Vikinox" className="h-20 w-auto object-contain shrink-0" />
             <div className="text-2xl font-bold">
               <span className={isScrolled ? "text-foreground" : "text-white"}>VIKI</span>
               <span className="text-gradient">NOX</span>
@@ -93,11 +95,11 @@ const Header = () => {
           <div
             className={`md:hidden pt-2 pb-4 border-t ${
               isScrolled
-                ? "bg-background border-border"
-                : "bg-transparent border-white/20"
+                ? "border-border"
+                : "border-white/20"
             }`}
           >
-            <nav className="flex flex-col space-y-4 px-1">
+            <nav className="flex flex-col space-y-4 px-1 bg-transparent">
               {navItems.map((item) => (
                 <a
                   key={item.name}

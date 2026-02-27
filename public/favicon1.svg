@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="vk-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#17324f" />
+      <stop offset="100%" stop-color="#2f79c6" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#f8fafc" />
+  <path d="M16 16h8l8 16 8-16h8L35 48h-6z" fill="#17324f" />
+  <path d="M36 16h10L36 32l10 16H36L26 32z" fill="url(#vk-grad)" />
+</svg>

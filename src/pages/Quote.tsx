@@ -63,7 +63,7 @@ const Quote = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/pedro@vikinox.com.br", {
+      const response = await fetch("https://formsubmit.co/ajax/vendas@vikinox.com.br", {
         method: "POST",
         headers: {
           Accept: "application/json",

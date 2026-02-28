@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Contact = () => {
   return (
@@ -86,30 +89,55 @@ const Contact = () => {
 
             <div className="bg-muted p-8 rounded-lg shadow-elegant">
               <h2 className="text-2xl font-bold text-foreground mb-6">
-                Dados da Empresa
+                Envie sua Mensagem
               </h2>
-              <div className="space-y-4">
+
+              <form
+                action="https://formsubmit.co/gabryel.velli@gmail.com"
+                method="POST"
+                className="space-y-4"
+              >
+                <input type="hidden" name="_subject" value="Novo contato - Site VIKINOX" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div>
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-1">
-                    {"Raz\u00E3o Social"}
-                  </h3>
-                  <p className="text-foreground">
-                    {"Vikinox Conex\u00F5es Tubos e Usinagem LTDA"}
-                  </p>
+                  <label htmlFor="name" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    Nome *
+                  </label>
+                  <Input id="name" name="name" placeholder="Seu nome" required />
                 </div>
+
                 <div>
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-1">
-                    CNPJ
-                  </h3>
-                  <p className="text-foreground">30.520.832/0001-25</p>
+                  <label htmlFor="email" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    E-mail *
+                  </label>
+                  <Input id="email" name="email" type="email" placeholder="seu@email.com" required />
                 </div>
+
                 <div>
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-1">
-                    E-mail Comercial
-                  </h3>
-                  <p className="text-foreground">vikinox@vikinox.com.br</p>
+                  <label htmlFor="phone" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    Telefone
+                  </label>
+                  <Input id="phone" name="phone" placeholder="(11) 00000-0000" />
                 </div>
-              </div>
+
+                <div>
+                  <label htmlFor="message" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    Mensagem *
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Escreva sua mensagem..."
+                    className="min-h-[140px]"
+                    required
+                  />
+                </div>
+
+                <Button type="submit" variant="cta" size="lg" className="w-full">
+                  Enviar Mensagem
+                </Button>
+              </form>
             </div>
           </div>
         </div>

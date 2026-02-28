@@ -1,87 +1,52 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { CheckCircle } from "lucide-react";
-
-const quoteFormSchema = z.object({
-  name: z.string().min(2, "Nome deve ter no m\u00EDnimo 2 caracteres").max(100),
-  email: z.string().email("E-mail inv\u00E1lido").max(255),
-  cnpj: z.string().min(14, "CNPJ inv\u00E1lido").max(18),
-  phone: z.string().min(10, "Telefone inv\u00E1lido").max(15),
-  position: z.string().min(2, "Cargo deve ter no m\u00EDnimo 2 caracteres").max(100),
-  deadline: z.string().min(2, "Prazo inv\u00E1lido").max(50),
-  message: z.string().min(10, "Mensagem deve ter no m\u00EDnimo 10 caracteres").max(1000),
-});
-
-type QuoteFormData = z.infer<typeof quoteFormSchema>;
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Quote = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const form = useForm<QuoteFormData>({
-    resolver: zodResolver(quoteFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      cnpj: "",
-      phone: "",
-      position: "",
-      deadline: "",
-      message: "",
-    },
-  });
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-  const onSubmit = (data: QuoteFormData) => {
-    console.log("Quote form data:", data);
-    setIsSubmitted(true);
-    toast({
-      title: "Or\u00E7amento enviado com sucesso!",
-      description: "Entraremos em contato em breve.",
-    });
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/gabryel.velli@gmail.com", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Falha no envio.");
+      }
+
+      form.reset();
+      setModalOpen(true);
+    } catch {
+      setSubmitError("Não foi possível enviar agora. Tente novamente em instantes.");
+      setModalOpen(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1 flex items-center justify-center py-32">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="text-accent" size={48} />
-              </div>
-              <h1 className="text-4xl font-bold text-foreground mb-4">
-                {"Solicita\u00E7\u00E3o Enviada!"}
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8">
-                {"Recebemos sua solicita\u00E7\u00E3o de or\u00E7amento. Nossa equipe entrar\u00E1 em contato em breve para discutir suas necessidades."}
-              </p>
-              <Button variant="cta" size="lg" onClick={() => setIsSubmitted(false)}>
-                {"Enviar Novo Or\u00E7amento"}
-              </Button>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -91,10 +56,10 @@ const Quote = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              {"Solicite um Or\u00E7amento"}
+              Solicite um Orçamento
             </h1>
             <p className="text-xl text-white/90">
-              {"Preencha o formul\u00E1rio abaixo e entraremos em contato rapidamente"}
+              Preencha o formulário abaixo e entraremos em contato rapidamente
             </p>
           </div>
         </div>
@@ -103,120 +68,80 @@ const Quote = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Nome Completo *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Seu nome" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input type="hidden" name="_subject" value="Novo orçamento - Site VIKINOX" />
+              <input type="hidden" name="_captcha" value="false" />
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>E-mail *</FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="seu@email.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="cnpj"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>CNPJ *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="00.000.000/0000-00" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Telefone *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="(11) 00000-0000" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="position"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Cargo *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Seu cargo" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="deadline"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Prazo *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: 30 dias" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    Nome Completo *
+                  </label>
+                  <Input id="name" name="Nome" placeholder="Seu nome" required />
                 </div>
 
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{"Mensagem / Descri\u00E7\u00E3o do Produto *"}</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Descreva os produtos que precisa e quantidade..."
-                          className="min-h-[150px]"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div>
+                  <label htmlFor="email" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    E-mail *
+                  </label>
+                  <Input id="email" name="Email Remetente" type="email" placeholder="seu@email.com" required />
+                </div>
 
-                <Button type="submit" variant="cta" size="xl" className="w-full">
-                  {"Enviar Solicita\u00E7\u00E3o"}
-                </Button>
-              </form>
-            </Form>
+                <div>
+                  <label htmlFor="cnpj" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    CNPJ *
+                  </label>
+                  <Input id="cnpj" name="CNPJ" placeholder="00.000.000/0000-00" required />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    Telefone *
+                  </label>
+                  <Input id="phone" name="Telefone" placeholder="(11) 00000-0000" required />
+                </div>
+
+                <div>
+                  <label htmlFor="position" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                    Cargo *
+                  </label>
+                  <Input id="position" name="Cargo" placeholder="Seu cargo" required />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="text-sm font-semibold text-muted-foreground mb-1 block">
+                  Mensagem / Descrição do Produto *
+                </label>
+                <Textarea
+                  id="message"
+                  name="Descricao"
+                  placeholder="Descreva os produtos que precisa e quantidade..."
+                  className="min-h-[150px]"
+                  required
+                />
+              </div>
+
+              <Button type="submit" variant="cta" size="xl" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Enviando..." : "Enviar Solicitação"}
+              </Button>
+            </form>
           </div>
         </div>
       </section>
+
+      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{submitError ? "Falha no envio" : "Solicitação enviada"}</DialogTitle>
+            <DialogDescription>
+              {submitError
+                ? submitError
+                : "Recebemos sua solicitação de orçamento. Em breve entraremos em contato."}
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>

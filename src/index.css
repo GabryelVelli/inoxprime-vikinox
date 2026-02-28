@@ -126,3 +126,9 @@ All colors MUST be HSL.
   }
 }
 
+.clients-prev.swiper-button-disabled,
+.clients-next.swiper-button-disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+

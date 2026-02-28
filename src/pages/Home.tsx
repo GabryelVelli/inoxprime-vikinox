@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -12,6 +12,16 @@ import heroImage from "@/assets/hero-building.jpeg";
 import productPump from "@/assets/product-pump.png";
 import productConnections from "@/assets/product-connections.png";
 import productFilter from "@/assets/product-filter.png";
+import client3m from "@/assets/client-3m.svg";
+import clientColgate from "@/assets/client-colgate.svg";
+import clientPall from "@/assets/logo-pall.png";
+import clientDonaldson from "@/assets/logo-donaldson.png";
+import clientBasf from "@/assets/logo-basf.png";
+import clientParker from "@/assets/logo-parker.png";
+import clientWgm from "@/assets/logo-wgm.png";
+import clientZeppelin from "@/assets/logo-zeppelin.png";
+import clientMerck from "@/assets/logo-merck.png";
+import clientToledo from "@/assets/logo-toledo.png";
 
 const Home = () => {
   const products = [
@@ -33,16 +43,16 @@ const Home = () => {
   ];
 
   const clients = [
-    { name: "3M", logo: "3M" },
-    { name: "Merck", logo: "Merck" },
-    { name: "Colgate", logo: "Colgate" },
-    { name: "Pall", logo: "Pall" },
-    { name: "Donaldson", logo: "Donaldson" },
-    { name: "Zeppelin", logo: "Zeppelin" },
-    { name: "Basf", logo: "Basf" },
-    { name: "Parker", logo: "Parker" },
-    { name: "Toledo", logo: "Toledo" },
-    { name: "WGM", logo: "WGM" },
+    { name: "3M", logo: "3M", logoImage: client3m },
+    { name: "Merck", logo: "Merck", logoImage: clientMerck },
+    { name: "Colgate", logo: "Colgate", logoImage: clientColgate },
+    { name: "Pall", logo: "Pall", logoImage: clientPall },
+    { name: "Donaldson", logo: "Donaldson", logoImage: clientDonaldson },
+    { name: "Zeppelin", logo: "Zeppelin", logoImage: clientZeppelin },
+    { name: "Basf", logo: "Basf", logoImage: clientBasf },
+    { name: "Parker", logo: "Parker", logoImage: clientParker },
+    { name: "Toledo", logo: "Toledo", logoImage: clientToledo },
+    { name: "WGM", logo: "WGM", logoImage: clientWgm },
   ];
 
   const features = [
@@ -60,7 +70,7 @@ const Home = () => {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `linear-gradient(rgba(20, 40, 60, 0.5), rgba(20, 40, 60, 0.75)), url(${heroImage})`,
+            backgroundImage: `linear-gradient(rgba(20, 40, 60, 0), rgba(20, 40, 60, 0.8)), url(${heroImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
@@ -159,10 +169,23 @@ const Home = () => {
               Parceiros de sucesso em diversos segmentos
             </p>
           </div>
-          <div className="max-w-6xl mx-auto relative px-12">
+          <div className="max-w-6xl mx-auto relative px-8 md:px-12">
+            <button
+              className="clients-prev hidden md:flex absolute left-0 top-1/2 -translate-x-12 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border border-accent/30 bg-background text-accent shadow-elegant"
+              aria-label="Cliente anterior"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              className="clients-next hidden md:flex absolute right-0 top-1/2 translate-x-12 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border border-accent/30 bg-background text-accent shadow-elegant"
+              aria-label="Próximo cliente"
+            >
+              <ChevronRight size={20} />
+            </button>
             <Swiper
+              className="clients-swiper"
               modules={[Navigation, Autoplay]}
-              navigation
+              navigation={{ prevEl: ".clients-prev", nextEl: ".clients-next" }}
               autoplay={{ delay: 2500, disableOnInteraction: false }}
               loop
               spaceBetween={30}
@@ -174,10 +197,20 @@ const Home = () => {
             >
               {clients.map((client, index) => (
                 <SwiperSlide key={index}>
-                  <div className="bg-background p-8 rounded-lg shadow-elegant flex items-center justify-center">
-                    <span className="text-2xl font-bold text-foreground">
-                      {client.logo}
-                    </span>
+                  <div className="bg-background p-8 rounded-lg shadow-elegant flex items-center justify-center min-h-[112px]">
+                    {client.logoImage ? (
+                      <div className="h-12 w-32 flex items-center justify-center">
+                        <img
+                          src={client.logoImage}
+                          alt={`Logo ${client.name}`}
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <span className="text-2xl font-bold text-foreground">
+                        {client.logo}
+                      </span>
+                    )}
                   </div>
                 </SwiperSlide>
               ))}

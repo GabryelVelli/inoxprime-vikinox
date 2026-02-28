@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import logoVikinoxWhite from "@/assets/logo-vikinox-white.png";
 
 const Footer = () => {
   return (
@@ -6,19 +7,24 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="text-2xl font-bold mb-4">
-              <span className="text-white">VIKI</span>
-              <span className="text-secondary">NOX</span>
+            <div className="mb-2">
+              <img
+                src={logoVikinoxWhite}
+                alt="VIKINOX"
+                className="h-24 w-auto object-contain -mt-9"
+              />
             </div>
-            <p className="text-sm text-white/80">
-              {"Solu\u00E7\u00F5es em a\u00E7o inoxid\u00E1vel para diversos setores."}
-            </p>
-            <p className="text-xs text-white/60 mt-4">
-              {"Raz\u00E3o Social: Vikinox Conex\u00F5es Tubos e Usinagem LTDA"}
-            </p>
-            <p className="text-xs text-white/60">
-              CNPJ: 30.520.832/0001-25
-            </p>
+            <div className="ml-3">
+              <p className="text-sm text-white/80 -mt-6">
+                {"Solu\u00E7\u00F5es em a\u00E7o inoxid\u00E1vel para diversos setores."}
+              </p>
+              <p className="text-xs text-white/60 mt-3">
+                {"Raz\u00E3o Social: Vikinox Conex\u00F5es Tubos e Usinagem LTDA"}
+              </p>
+              <p className="text-xs text-white/60">
+                CNPJ: 30.520.832/0001-25
+              </p>
+            </div>
           </div>
 
           <div>

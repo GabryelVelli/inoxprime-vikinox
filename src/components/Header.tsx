@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoVk from "@/assets/logovk.png";
+import logoVikinox from "@/assets/logo-vikinox-white.png";
+import logoVikinoxBlack from "@/assets/logo-vikinox-black.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,12 +44,12 @@ const Header = () => {
       >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <img src={logoVk} alt="Logo Vikinox" className="h-20 w-auto object-contain shrink-0" />
-            <div className="text-2xl font-bold">
-              <span className={isScrolled ? "text-foreground" : "text-white"}>VIKI</span>
-              <span className="text-gradient">NOX</span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img
+              src={isScrolled ? logoVikinoxBlack : logoVikinox}
+              alt="VIKINOX"
+              className="h-20 md:h-28 w-auto object-contain shrink-0"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">

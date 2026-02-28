@@ -22,7 +22,7 @@ const Footer = () => {
                 {"Raz\u00E3o Social: Vikinox Conex\u00F5es Tubos e Usinagem LTDA"}
               </p>
               <p className="text-xs text-white/60">
-                CNPJ: 30.520.832/0001-25
+                CNPJ: 39.360.852/0001-25
               </p>
             </div>
           </div>
@@ -36,16 +36,16 @@ const Footer = () => {
                   href="mailto:vikinox@vikinox.com.br"
                   className="text-sm text-white/80 hover:text-secondary transition-smooth"
                 >
-                  vikinox@vikinox.com.br
+                  vendas@vikinox.com.br
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={18} className="text-secondary" />
                 <a
-                  href="tel:+5511959690000"
+                  href="tel:+551150267082"
                   className="text-sm text-white/80 hover:text-secondary transition-smooth"
                 >
-                  (11) 95969-0000
+                  (11) 5026-7082
                 </a>
               </div>
               <div className="flex items-start space-x-3">

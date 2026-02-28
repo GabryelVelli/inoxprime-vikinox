@@ -45,7 +45,7 @@ const Contact = () => {
                       href="mailto:vikinox@vikinox.com.br"
                       className="text-muted-foreground hover:text-accent transition-smooth"
                     >
-                      vikinox@vikinox.com.br
+                      vendas@vikinox.com.br
                     </a>
                   </div>
                 </div>
@@ -55,10 +55,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Telefone</h3>
                     <a
-                      href="tel:+5511959690000"
+                      href="tel:+551150267082"
                       className="text-muted-foreground hover:text-accent transition-smooth"
                     >
-                      (11) 95969-0000
+                      (11) 5026-7082
                     </a>
                   </div>
                 </div>

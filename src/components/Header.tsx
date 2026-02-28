@@ -23,6 +23,7 @@ const Header = () => {
     { name: "Empresa", path: "/#empresa" },
     { name: "Produtos", path: "/produtos" },
     { name: "Contato", path: "/contato" },
+    { name: "LGPD", path: "/lgpd" },
   ];
 
   const isActive = (path: string) => {

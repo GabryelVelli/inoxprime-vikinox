@@ -16,9 +16,46 @@ const Quote = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [cnpj, setCnpj] = useState("");
+
+  const formatCnpj = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 14);
+    return digits
+      .replace(/^(\d{2})(\d)/, "$1.$2")
+      .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/\.(\d{3})(\d)/, ".$1/$2")
+      .replace(/(\d{4})(\d)/, "$1-$2");
+  };
+
+  const isValidCnpj = (value: string) => {
+    const digits = value.replace(/\D/g, "");
+    if (digits.length !== 14) return false;
+    if (/^(\d)\1{13}$/.test(digits)) return false;
+
+    const calcDigit = (base: string, factors: number[]) => {
+      const total = base
+        .split("")
+        .reduce((sum, num, index) => sum + Number(num) * factors[index], 0);
+      const rest = total % 11;
+      return rest < 2 ? 0 : 11 - rest;
+    };
+
+    const base12 = digits.slice(0, 12);
+    const d1 = calcDigit(base12, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
+    const d2 = calcDigit(`${base12}${d1}`, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
+
+    return digits === `${base12}${d1}${d2}`;
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!isValidCnpj(cnpj)) {
+      setSubmitError("CNPJ inválido. Verifique e tente novamente.");
+      setModalOpen(true);
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -39,6 +76,7 @@ const Quote = () => {
       }
 
       form.reset();
+      setCnpj("");
       setModalOpen(true);
     } catch {
       setSubmitError("Não foi possível enviar agora. Tente novamente em instantes.");
@@ -91,7 +129,16 @@ const Quote = () => {
                   <label htmlFor="cnpj" className="text-sm font-semibold text-muted-foreground mb-1 block">
                     CNPJ *
                   </label>
-                  <Input id="cnpj" name="CNPJ" placeholder="00.000.000/0000-00" required />
+                  <Input
+                    id="cnpj"
+                    name="CNPJ"
+                    placeholder="00.000.000/0000-00"
+                    inputMode="numeric"
+                    maxLength={18}
+                    value={cnpj}
+                    onChange={(event) => setCnpj(formatCnpj(event.target.value))}
+                    required
+                  />
                 </div>
 
                 <div>

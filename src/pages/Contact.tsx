@@ -93,7 +93,7 @@ const Contact = () => {
               </h2>
 
               <form
-                action="https://formsubmit.co/gabryel.velli@gmail.com"
+                action="https://formsubmit.co/pedro@vikinox.com.br"
                 method="POST"
                 className="space-y-4"
               >

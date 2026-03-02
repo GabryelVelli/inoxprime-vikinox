@@ -17,7 +17,7 @@ const Contact = () => {
               Entre em Contato
             </h1>
             <p className="text-xl text-white/90">
-              {"Estamos prontos para atender voc\u00EA e sua empresa"}
+              {"Estamos prontos para atender voc\u00EA e sua empresa."}
             </p>
           </div>
         </div>
@@ -32,7 +32,7 @@ const Contact = () => {
                   {"Informa\u00E7\u00F5es de Contato"}
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  {"Entre em contato conosco atrav\u00E9s de qualquer um dos canais abaixo. Nossa equipe est\u00E1 pronta para atend\u00EA-lo."}
+                  {"Entre em contato conosco atrav\u00E9s de qualquer um dos canais abaixo."}
                 </p>
               </div>
 

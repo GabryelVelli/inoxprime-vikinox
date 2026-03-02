@@ -163,7 +163,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Clientes que Confiam na VIKINOX
+              Clientes que confiam na VIKINOX
             </h2>
             <p className="text-lg text-muted-foreground">
               Parceiros de sucesso em diversos segmentos
@@ -222,10 +222,10 @@ const Home = () => {
       <section className="py-20 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            {"Pronto para Come\u00E7ar?"}
+            {"Pronto para come\u00E7ar?"}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            {"Entre em contato conosco e descubra como podemos fornecer as melhores solu\u00E7\u00F5es em a\u00E7o inoxid\u00E1vel para o seu neg\u00F3cio"}
+            {"Entre em contato conosco e descubra como podemos fornecer as melhores solu\u00E7\u00F5es em a\u00E7o inoxid\u00E1vel para o seu neg\u00F3cio."}
           </p>
           <Link to="/orcamento">
             <Button variant="hero" size="xl" className="bg-white text-primary hover:bg-white/90">

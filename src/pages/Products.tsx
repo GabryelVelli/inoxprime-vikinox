@@ -53,7 +53,7 @@ const Products = () => {
               Nossos Produtos
             </h1>
             <p className="text-xl text-white/90">
-              {"Linha completa de produtos em a\u00E7o inoxid\u00E1vel com qualidade certificada"}
+              {"Linha completa de produtos em a\u00E7o inoxid\u00E1vel com qualidade certificada."}
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Products = () => {
                   Materiais Certificados
                 </h3>
                 <p>
-                  {"Todos os nossos produtos s\u00E3o fabricados com a\u00E7o inoxid\u00E1vel 304 e 316L, garantindo m\u00E1xima resist\u00EAncia \u00E0 corros\u00E3o e durabilidade."}
+                  {"Todos os nossos produtos s\u00E3o fabricados com a\u00E7o inoxid\u00E1vel 304/304L e 316/316L, garantindo m\u00E1xima resist\u00EAncia \u00E0 corros\u00E3o e durabilidade."}
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg shadow-elegant">

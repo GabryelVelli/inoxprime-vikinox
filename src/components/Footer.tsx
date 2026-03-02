@@ -86,6 +86,12 @@ const Footer = () => {
               >
                 Contato
               </a>
+              <a 
+                href="/lgpd"
+                className="block text-sm text-white/80 hover:text-secondary transition-smooth"
+              >
+                LGPD
+              </a>  
             </nav>
           </div>
         </div>
